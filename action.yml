@@ -1,0 +1,255 @@
+name: Terraform Cloud API
+description: Fetch data from the Terraform Cloud API, make it available as outputs
+
+branding:
+  icon: cloud
+  color: purple
+
+inputs:
+  token:
+    description: Terraform Cloud API token
+    required: true
+
+  organization:
+    description: organization name
+    required: true
+
+  workspace:
+    description: workspace name
+    required: true
+
+outputs:
+  workspace_json:
+    description: workspace_json
+    value: ${{ steps.main.outputs.workspace_json }}
+
+  workspace_allow_destroy_plan:
+    description: workspace_allow_destroy_plan
+    value: ${{ steps.main.outputs.workspace_allow_destroy_plan }}
+
+  workspace_auto_apply:
+    description: workspace_auto_apply
+    value: ${{ steps.main.outputs.workspace_auto_apply }}
+
+  workspace_auto_destroy_at:
+    description: workspace_auto_destroy_at
+    value: ${{ steps.main.outputs.workspace_auto_destroy_at }}
+
+  workspace_auto_destroy_status:
+    description: workspace_auto_destroy_status
+    value: ${{ steps.main.outputs.workspace_auto_destroy_status }}
+
+  workspace_environment:
+    description: workspace_environment
+    value: ${{ steps.main.outputs.workspace_environment }}
+
+  workspace_locked:
+    description: workspace_locked
+    value: ${{ steps.main.outputs.workspace_locked }}
+
+  workspace_name:
+    description: workspace_name
+    value: ${{ steps.main.outputs.workspace_name }}
+
+  workspace_queue_all_runs:
+    description: workspace_queue_all_runs
+    value: ${{ steps.main.outputs.workspace_queue_all_runs }}
+
+  workspace_speculative_enabled:
+    description: workspace_speculative_enabled
+    value: ${{ steps.main.outputs.workspace_speculative_enabled }}
+
+  workspace_structured_run_output_enabled:
+    description: workspace_structured_run_output_enabled
+    value: ${{ steps.main.outputs.workspace_structured_run_output_enabled }}
+
+  workspace_terraform_version:
+    description: workspace_terraform_version
+    value: ${{ steps.main.outputs.workspace_terraform_version }}
+
+  workspace_working_directory:
+    description: workspace_working_directory
+    value: ${{ steps.main.outputs.workspace_working_directory }}
+
+  workspace_global_remote_state:
+    description: workspace_global_remote_state
+    value: ${{ steps.main.outputs.workspace_global_remote_state }}
+
+  workspace_updated_at:
+    description: workspace_updated_at
+    value: ${{ steps.main.outputs.workspace_updated_at }}
+
+  workspace_resource_count:
+    description: workspace_resource_count
+    value: ${{ steps.main.outputs.workspace_resource_count }}
+
+  workspace_apply_duration_average:
+    description: workspace_apply_duration_average
+    value: ${{ steps.main.outputs.workspace_apply_duration_average }}
+
+  workspace_plan_duration_average:
+    description: workspace_plan_duration_average
+    value: ${{ steps.main.outputs.workspace_plan_duration_average }}
+
+  workspace_policy_check_failures:
+    description: workspace_policy_check_failures
+    value: ${{ steps.main.outputs.workspace_policy_check_failures }}
+
+  workspace_run_failures:
+    description: workspace_run_failures
+    value: ${{ steps.main.outputs.workspace_run_failures }}
+
+  workspace_workspace_kpis_runs_count:
+    description: workspace_workspace_kpis_runs_count
+    value: ${{ steps.main.outputs.workspace_workspace_kpis_runs_count }}
+
+  workspace_latest_change_at:
+    description: workspace_latest_change_at
+    value: ${{ steps.main.outputs.workspace_latest_change_at }}
+
+  workspace_operations:
+    description: workspace_operations
+    value: ${{ steps.main.outputs.workspace_operations }}
+
+  workspace_execution_mode:
+    description: workspace_execution_mode
+    value: ${{ steps.main.outputs.workspace_execution_mode }}
+
+  workspace_vcs_repo:
+    description: workspace_vcs_repo
+    value: ${{ steps.main.outputs.workspace_vcs_repo }}
+
+  workspace_vcs_repo_identifier:
+    description: workspace_vcs_repo_identifier
+    value: ${{ steps.main.outputs.workspace_vcs_repo_identifier }}
+
+  workspace_description:
+    description: workspace_description
+    value: ${{ steps.main.outputs.workspace_description }}
+
+  workspace_file_triggers_enabled:
+    description: workspace_file_triggers_enabled
+    value: ${{ steps.main.outputs.workspace_file_triggers_enabled }}
+
+  workspace_assessments_enabled:
+    description: workspace_assessments_enabled
+    value: ${{ steps.main.outputs.workspace_assessments_enabled }}
+
+  workspace_last_assessment_result_at:
+    description: workspace_last_assessment_result_at
+    value: ${{ steps.main.outputs.workspace_last_assessment_result_at }}
+
+  workspace_source:
+    description: workspace_source
+    value: ${{ steps.main.outputs.workspace_source }}
+
+  workspace_source_name:
+    description: workspace_source_name
+    value: ${{ steps.main.outputs.workspace_source_name }}
+
+  workspace_source_url:
+    description: workspace_source_url
+    value: ${{ steps.main.outputs.workspace_source_url }}
+
+  organization_json:
+    description: organization_json
+    value: ${{ steps.main.outputs.organization_json }}
+
+  organization_external_id:
+    description: organization_external_id
+    value: ${{ steps.main.outputs.organization_external_id }}
+
+  organization_created_at:
+    description: organization_created_at
+    value: ${{ steps.main.outputs.organization_created_at }}
+
+  organization_email:
+    description: organization_email
+    value: ${{ steps.main.outputs.organization_email }}
+
+  organization_session_timeout:
+    description: organization_session_timeout
+    value: ${{ steps.main.outputs.organization_session_timeout }}
+
+  organization_session_remember:
+    description: organization_session_remember
+    value: ${{ steps.main.outputs.organization_session_remember }}
+
+  organization_collaborator_auth_policy:
+    description: organization_collaborator_auth_policy
+    value: ${{ steps.main.outputs.organization_collaborator_auth_policy }}
+
+  organization_plan_expired:
+    description: organization_plan_expired
+    value: ${{ steps.main.outputs.organization_plan_expired }}
+
+  organization_plan_expires_at:
+    description: organization_plan_expires_at
+    value: ${{ steps.main.outputs.organization_plan_expires_at }}
+
+  organization_plan_is_trial:
+    description: organization_plan_is_trial
+    value: ${{ steps.main.outputs.organization_plan_is_trial }}
+
+  organization_plan_is_enterprise:
+    description: organization_plan_is_enterprise
+    value: ${{ steps.main.outputs.organization_plan_is_enterprise }}
+
+  organization_plan_identifier:
+    description: organization_plan_identifier
+    value: ${{ steps.main.outputs.organization_plan_identifier }}
+
+  organization_cost_estimation_enabled:
+    description: organization_cost_estimation_enabled
+    value: ${{ steps.main.outputs.organization_cost_estimation_enabled }}
+
+  organization_managed_resource_count:
+    description: organization_managed_resource_count
+    value: ${{ steps.main.outputs.organization_managed_resource_count }}
+
+  organization_send_passing_statuses_for_untriggered_speculative_plans:
+    description: organization_send_passing_statuses_for_untriggered_speculative_plans
+    value: ${{ steps.main.outputs.organization_send_passing_statuses_for_untriggered_speculative_plans }}
+
+  organization_allow_force_delete_workspaces:
+    description: organization_allow_force_delete_workspaces
+    value: ${{ steps.main.outputs.organization_allow_force_delete_workspaces }}
+
+  organization_assessments_enforced:
+    description: organization_assessments_enforced
+    value: ${{ steps.main.outputs.organization_assessments_enforced }}
+
+  organization_is_in_degraded_mode:
+    description: organization_is_in_degraded_mode
+    value: ${{ steps.main.outputs.organization_is_in_degraded_mode }}
+
+  organization_name:
+    description: organization_name
+    value: ${{ steps.main.outputs.organization_name }}
+
+  organization_saml_enabled:
+    description: organization_saml_enabled
+    value: ${{ steps.main.outputs.organization_saml_enabled }}
+
+  organization_fair_run_queuing_enabled:
+    description: organization_fair_run_queuing_enabled
+    value: ${{ steps.main.outputs.organization_fair_run_queuing_enabled }}
+
+  organization_owners_team_saml_role_id:
+    description: organization_owners_team_saml_role_id
+    value: ${{ steps.main.outputs.organization_owners_team_saml_role_id }}
+
+  organization_two_factor_conformant:
+    description: organization_two_factor_conformant
+    value: ${{ steps.main.outputs.organization_two_factor_conformant }}
+
+runs:
+  using: composite
+  steps:
+    - id: main
+      shell: bash
+      run: ${{ github.action_path }}/scripts/index.sh
+      env:
+        INPUT_ORG: ${{ inputs.organization }}
+        INPUT_PROJECT: ${{ inputs.project }}
+        TOKEN: ${{ inputs.token }}

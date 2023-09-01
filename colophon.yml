@@ -1,8 +1,8 @@
 version: 2.0
 
-id: template-action-composite
+id: action-terraform-cloud-api
 
 about:
-  title: Template GitHub Composite Actions
-  description: A template for GitHub Template GitHub Composite Actions
-  repository: ahmadnassri/template-action-composite
+  title: "Action: Terraform Cloud API"
+  description: Fetch data from the Terraform Cloud API, make it available as outputs
+  repository: ahmadnassri/action-terraform-cloud-api
