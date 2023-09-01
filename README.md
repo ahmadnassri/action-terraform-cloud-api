@@ -55,7 +55,7 @@ jobs:
 | **`workspace_speculative_enabled`**              | `true`                                         |
 | **`workspace_structured_run_output_enabled`**    | `false`                                        |
 | **`workspace_terraform_version`**                | `1.3.6`                                        |
-| **`workspace_working_directory`**                | \`\`                                           |
+| **`workspace_working_directory`**                | ` `                                            |
 | **`workspace_global_remote_state`**              | `false`                                        |
 | **`workspace_updated_at`**                       | `2023-09-01T18:40:06.586Z`                     |
 | **`workspace_resource_count`**                   | `428`                                          |
