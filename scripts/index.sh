@@ -93,7 +93,7 @@ for KEY in "${!ENDPOINTS[@]}"; do
 
   echo ::debug::response ${RESPONSE}
 
-  JSON=$(echo "${RESPONSE}" | jq -r .data.attributes)
+  JSON=$(echo "${RESPONSE}" | jq -c .data.attributes)
 
   echo ${NAME}_json="${JSON}" >> ${GITHUB_OUTPUT}
 
