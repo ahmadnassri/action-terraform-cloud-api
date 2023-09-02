@@ -9,7 +9,7 @@ echo ::debug::org set to ${TF_ORG}
 echo ::debug::workspace set to ${TF_ORG}
 
 function api {
-  echo $(curl -s -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/${1} | jq -c .data.attributes)
+  echo $(curl -s -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/${1})
 }
 
 declare -A PREFIX
@@ -89,7 +89,12 @@ for KEY in "${!ENDPOINTS[@]}"; do
 
   echo ::debug::fetch ${NAME}
 
-  JSON=$(api ${ENDPOINTS[$KEY]})
+  RESPONSE=$(api ${ENDPOINTS[$KEY]})
+
+  echo ::debug::response ${RESPONSE}
+
+  JSON=$(echo "${RESPONSE}" | jq -r .data.attributes)
+
   echo ${NAME}_json="${JSON}" >> ${GITHUB_OUTPUT}
 
   # populate props
