@@ -87,7 +87,7 @@ WORKSPACE_PROPS=(
 for KEY in "${!ENDPOINTS[@]}"; do
   NAME="${PREFIX[$KEY]}"
 
-  echo ::debug::fetch ${NAME} ${KEY}
+  echo ::debug::fetch ${NAME}
 
   JSON=$(api ${ENDPOINTS[$KEY]})
   echo ${NAME}_json="${JSON}" >> ${GITHUB_OUTPUT}
