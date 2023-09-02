@@ -251,5 +251,5 @@ runs:
       run: ${{ github.action_path }}/scripts/index.sh
       env:
         INPUT_ORG: ${{ inputs.organization }}
-        INPUT_PROJECT: ${{ inputs.project }}
+        INPUT_WORKSPACE: ${{ inputs.workspace }}
         TOKEN: ${{ inputs.token }}
