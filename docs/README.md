@@ -12,6 +12,10 @@ jobs:
 
       - id: terraform
         uses: ahmadnassri/action-terraform-cloud-api@v1
+        with:
+          token: ${{ secrets.TERRAFORM_TOKEN }}
+          organization: foobar
+          workspace: my-project
 
       # check if workspace is locked before attempting a run
       - if: steps.terraform.outputs.workspace_locked == 'true'
@@ -31,6 +35,12 @@ jobs:
 ```
 
 ## Inputs
+
+| Input          | Required | Description                   |
+| -------------- | -------- | ----------------------------- |
+| `token`        | ✔️       | the Terraform Cloud API Token |
+| `organization` | ✔️       | Terraform Cloud Org name      |
+| `workspace`    | ✔️       | Workspace name                |
 
 ## Outputs
 
