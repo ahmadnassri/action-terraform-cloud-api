@@ -17,6 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # read workspace information from .terraform/terraform.tfstate file
+      - id: terraform
+        uses: ahmadnassri/action-terraform-cloud-api@v1
+        with:
+          token: ${{ secrets.TERRAFORM_TOKEN }}
+
+      # specify organization and workspace
       - id: terraform
         uses: ahmadnassri/action-terraform-cloud-api@v1
         with:
@@ -43,11 +50,15 @@ jobs:
 
 ## Inputs
 
-| Input          | Required | Description                   |
-|----------------|----------|-------------------------------|
-| `token`        | ✔️       | the Terraform Cloud API Token |
-| `organization` | ✔️       | Terraform Cloud Org name      |
-| `workspace`    | ✔️       | Workspace name                |
+| Input          | Required | Default                        | Description                   |
+|----------------|----------|--------------------------------|-------------------------------|
+| `token`        | ✔️       | `N/A`                          | the Terraform Cloud API Token |
+| `state`        | ❌       | `.terraform/terraform.tfstate` | Path to terraform state file  |
+| `organization` | ❌       | `github.repository_owner`      | Terraform Cloud Org name      |
+| `workspace`    | ❌       | `-`                            | Workspace name                |
+
+> **NOTE**  
+> if `organization` & `workspace` are not provided, the action will attempt to read the info from the terraform state file
 
 ## Outputs
 

@@ -4,6 +4,10 @@ set -euo pipefail
 declare -A PREFIX
 declare -A ENDPOINTS
 
+# set ORG & WORKSPACE from state file
+TF_ORG=${INPUT_ORG:-$(jq -r '.backend.config.organization' < ${INPUT_STATE})}
+TF_WORKSPACE=${INPUT_WORKSPACE:-$(jq -r '.backend.config.workspaces.name' < ${INPUT_STATE})}
+
 function api {
   echo $(curl -s -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/${1} | jq -c .data.attributes)
 }
@@ -12,8 +16,8 @@ PREFIX[ORG]="organization"
 PREFIX[WORKSPACE]="workspace"
 
 # endpoints we want to call
-ENDPOINTS[ORG]="organizations/${INPUT_ORG}"
-ENDPOINTS[WORKSPACE]="organizations/${INPUT_ORG}/workspaces/${INPUT_WORKSPACE}"
+ENDPOINTS[ORG]="organizations/${TF_ORG}"
+ENDPOINTS[WORKSPACE]="organizations/${TF_ORG}/workspaces/${INPUT_WORKSPACE}"
 
 # props we want to export
 # shellcheck disable=SC2034
