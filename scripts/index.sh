@@ -20,7 +20,7 @@ PREFIX[WORKSPACE]="workspace"
 
 # endpoints we want to call
 ENDPOINTS[ORG]="organizations/${TF_ORG}"
-ENDPOINTS[WORKSPACE]="organizations/${TF_ORG}/workspaces/${INPUT_WORKSPACE}"
+ENDPOINTS[WORKSPACE]="organizations/${TF_ORG}/workspaces/${TF_WORKSPACE}"
 
 # props we want to export
 # shellcheck disable=SC2034
