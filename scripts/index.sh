@@ -1,16 +1,19 @@
 #!/bin/bash
 set -euo pipefail
 
-declare -A PREFIX
-declare -A ENDPOINTS
-
 # set ORG & WORKSPACE from state file
 TF_ORG=${INPUT_ORG:-$(jq -r '.backend.config.organization' < ${INPUT_STATE})}
 TF_WORKSPACE=${INPUT_WORKSPACE:-$(jq -r '.backend.config.workspaces.name' < ${INPUT_STATE})}
 
+echo ::debug::org set to ${TF_ORG}
+echo ::debug::workspace set to ${TF_ORG}
+
 function api {
   echo $(curl -s -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/${1} | jq -c .data.attributes)
 }
+
+declare -A PREFIX
+declare -A ENDPOINTS
 
 PREFIX[ORG]="organization"
 PREFIX[WORKSPACE]="workspace"
@@ -83,7 +86,9 @@ WORKSPACE_PROPS=(
 
 for KEY in "${!ENDPOINTS[@]}"; do
   NAME="${PREFIX[$KEY]}"
+
   echo ::debug::fetch ${NAME} ${KEY}
+
   JSON=$(api ${ENDPOINTS[$KEY]})
   echo ${NAME}_json="${JSON}" >> ${GITHUB_OUTPUT}
 
