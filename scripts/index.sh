@@ -5,7 +5,7 @@ declare -A PREFIX
 declare -A ENDPOINTS
 
 function api {
-  echo $(curl -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/${1} | jq -c .data.attributes)
+  echo $(curl -s -H "Authorization: Bearer ${TOKEN}" -H "Content-Type: application/vnd.api+json" https://app.terraform.io/api/v2/${1} | jq -c .data.attributes)
 }
 
 PREFIX[ORG]="organization"
